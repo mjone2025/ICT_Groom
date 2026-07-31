@@ -3,37 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AI 서비스 빌더 & 프론트엔드 크리에이터의 포트폴리오 및 자기소개 페이지" />
-  <title>MJ — AI 서비스 빌더 & 개발자 자기소개</title>
+  <meta name="description" content="MJ의 자기소개, 집중 타이머, 어린이를 위한 짝맞추기 게임이 담긴 포트폴리오" />
+  <title>MJ (임기환) — 프로필 & 인터랙티브 서비스</title>
 
-  <!-- Google Fonts & Font Awesome Icons -->
+  <!-- Google Fonts & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     :root {
-      --bg-dark: #090d16;
-      --bg-card: rgba(18, 24, 38, 0.75);
-      --bg-card-hover: rgba(28, 37, 56, 0.9);
-      --border-glow: rgba(99, 102, 241, 0.25);
-      --border-color: rgba(255, 255, 255, 0.08);
+      --bg-main: #0c1222;
+      --bg-card: rgba(21, 30, 52, 0.75);
+      --bg-card-hover: rgba(30, 42, 70, 0.9);
+      --border-color: rgba(255, 255, 255, 0.1);
       
-      --primary: #6366f1;
-      --primary-light: #818cf8;
+      --accent-purple: #8b5cf6;
+      --accent-indigo: #6366f1;
       --accent-cyan: #06b6d4;
-      --accent-purple: #a855f7;
-      --accent-emerald: #10b981;
+      --accent-pink: #ec4899;
+      --accent-amber: #f59e0b;
+      --accent-green: #10b981;
       
       --text-main: #f8fafc;
-      --text-sub: #94a3b8;
+      --text-sub: #cbd5e1;
       --text-muted: #64748b;
-      
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.2);
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+      --glow-shadow: 0 0 25px rgba(99, 102, 241, 0.25);
     }
 
     * {
@@ -47,53 +47,34 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
-      background-color: var(--bg-dark);
+      font-family: 'Noto Sans KR', 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-main);
       color: var(--text-main);
-      line-height: 1.7;
+      line-height: 1.6;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Ambient Background Glows */
-    .bg-blob {
+    /* Ambient Decorative Background Glows */
+    .bg-glow {
       position: absolute;
       border-radius: 50%;
-      filter: blur(120px);
-      z-index: -1;
-      opacity: 0.45;
+      filter: blur(130px);
       pointer-events: none;
+      z-index: -1;
+      opacity: 0.4;
     }
-    .blob-1 {
-      top: -100px;
-      left: -100px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, var(--primary), transparent 70%);
-    }
-    .blob-2 {
-      top: 400px;
-      right: -150px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--accent-purple), transparent 70%);
-    }
-    .blob-3 {
-      bottom: 100px;
-      left: 10%;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
-    }
+    .glow-1 { top: -100px; left: -100px; width: 500px; height: 500px; background: var(--accent-indigo); }
+    .glow-2 { top: 600px; right: -100px; width: 550px; height: 550px; background: var(--accent-purple); }
+    .glow-3 { bottom: 200px; left: 10%; width: 500px; height: 500px; background: var(--accent-cyan); }
 
-    /* Header & Navigation */
+    /* Navigation Header */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(9, 13, 22, 0.8);
+      background: rgba(12, 18, 34, 0.85);
       border-bottom: 1px solid var(--border-color);
     }
 
@@ -111,158 +92,112 @@
       align-items: center;
       gap: 12px;
       font-weight: 800;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       color: var(--text-main);
       text-decoration: none;
-      letter-spacing: -0.5px;
     }
 
-    .logo-badge {
-      background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+    .logo-icon {
       width: 38px;
       height: 38px;
       border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
       font-size: 1.1rem;
-      box-shadow: var(--shadow-glow);
+      color: #fff;
+      box-shadow: var(--glow-shadow);
     }
 
-    .nav-links {
+    .nav-menu {
       display: flex;
-      gap: 32px;
+      gap: 28px;
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-menu a {
       color: var(--text-sub);
       text-decoration: none;
       font-weight: 500;
       font-size: 0.95rem;
-      transition: color 0.25s ease;
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--primary-light);
+    .nav-menu a:hover {
+      color: var(--accent-indigo);
     }
 
-    .btn-contact {
-      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-      color: #fff;
-      padding: 10px 22px;
-      border-radius: 99px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
+    /* Common Card Styling */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(12px);
+      padding: 32px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
     }
 
-    .btn-contact:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Layout Main */
+    main {
+      max-width: 1200px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
     }
 
     /* Hero Section */
-    .hero {
-      max-width: 1200px;
-      margin: 80px auto 100px;
-      padding: 0 24px;
+    .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
+      gap: 40px;
       align-items: center;
     }
 
-    .hero-tag {
+    .badge-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 6px 16px;
       border-radius: 99px;
-      background: rgba(99, 102, 241, 0.12);
+      background: rgba(99, 102, 241, 0.15);
       border: 1px solid rgba(99, 102, 241, 0.3);
-      color: var(--primary-light);
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 24px;
+      color: #a5b4fc;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
       font-weight: 800;
       line-height: 1.25;
-      margin-bottom: 24px;
-      letter-spacing: -1px;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
     }
 
-    .gradient-text {
+    .highlight {
       background: linear-gradient(135deg, #a855f7, #6366f1, #06b6d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-desc {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-sub);
-      margin-bottom: 40px;
-      max-width: 580px;
+      margin-bottom: 32px;
+      max-width: 560px;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
-      color: #fff;
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-glow);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Profile Card Visual */
+    /* Profile Summary Card */
     .profile-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glow);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
       position: relative;
       overflow: hidden;
     }
@@ -270,11 +205,9 @@
     .profile-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 4px;
-      background: linear-gradient(90deg, var(--accent-purple), var(--primary), var(--accent-cyan));
+      background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
     }
 
     .profile-header {
@@ -285,315 +218,356 @@
     }
 
     .avatar {
-      width: 80px;
-      height: 80px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.2rem;
+      font-size: 2rem;
       color: #fff;
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
     }
 
-    .profile-info h3 {
-      font-size: 1.4rem;
+    .profile-name h3 {
+      font-size: 1.35rem;
       font-weight: 700;
     }
 
-    .profile-info p {
+    .profile-name p {
       color: var(--text-sub);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 6px;
-      font-size: 0.8rem;
-      color: var(--accent-emerald);
-      background: rgba(16, 185, 129, 0.1);
-      padding: 4px 10px;
-      border-radius: 99px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--accent-emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent-emerald);
-    }
-
-    .profile-details {
-      border-top: 1px solid var(--border-color);
-      padding-top: 20px;
+    .info-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
     }
 
-    .detail-item {
+    .info-item {
       background: rgba(255, 255, 255, 0.03);
       padding: 12px 16px;
       border-radius: var(--radius-sm);
     }
 
-    .detail-item label {
+    .info-item label {
       font-size: 0.75rem;
       color: var(--text-muted);
       display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-bottom: 4px;
     }
 
-    .detail-item span {
+    .info-item span {
       font-size: 0.95rem;
       font-weight: 600;
-      color: var(--text-main);
     }
 
-    /* Section Container */
-    section {
-      max-width: 1200px;
-      margin: 0 auto 120px;
-      padding: 0 24px;
-    }
-
-    .section-header {
-      margin-bottom: 50px;
-      text-align: center;
+    /* Section Titles */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .section-subtitle {
-      color: var(--primary-light);
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 8px;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
     }
 
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-    }
-
-    /* About Cards Grid */
-    .about-grid {
+    /* =======================================
+       1. FOCUS TIMER SECTION (집중 타이머)
+       ======================================= */
+    .timer-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 32px;
+      align-items: center;
     }
 
-    .about-card {
-      background: var(--bg-card);
+    .timer-display-box {
+      background: rgba(12, 18, 34, 0.7);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 32px;
-      transition: all 0.35s ease;
+      padding: 40px 20px;
+      text-align: center;
       position: relative;
     }
 
-    .about-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--border-glow);
-      background: var(--bg-card-hover);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    .circular-timer {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 24px;
     }
 
-    .card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: rgba(99, 102, 241, 0.15);
-      color: var(--primary-light);
+    .circular-timer svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .timer-bg-circle {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 10;
+    }
+
+    .timer-progress-circle {
+      fill: none;
+      stroke: url(#timer-gradient);
+      stroke-width: 10;
+      stroke-dasharray: 565;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s linear;
+    }
+
+    .timer-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.8rem;
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', monospace;
+      color: var(--text-main);
+      text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .timer-presets {
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-    }
-
-    .about-card h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .about-card p {
-      color: var(--text-sub);
-      font-size: 0.98rem;
-    }
-
-    /* Tech Stack / Skills */
-    .skills-wrapper {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-    }
-
-    .skills-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .chip {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
-      padding: 10px 20px;
-      border-radius: 99px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
       gap: 10px;
-      transition: all 0.25s ease;
-      cursor: default;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
     }
 
-    .chip:hover {
-      background: rgba(99, 102, 241, 0.2);
-      border-color: var(--primary);
-      color: #fff;
-      transform: scale(1.05);
-    }
-
-    .chip i {
-      color: var(--accent-cyan);
-    }
-
-    /* Project Cards */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 32px;
-    }
-
-    .project-card {
-      background: var(--bg-card);
+    .btn-preset {
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      color: var(--text-main);
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-preset:hover, .btn-preset.active {
+      background: var(--accent-indigo);
+      border-color: var(--accent-indigo);
+      color: #fff;
+    }
+
+    .timer-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-timer-action {
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-start {
+      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-purple));
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-start:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-stop {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+
+    .btn-stop:hover {
+      background: rgba(239, 68, 68, 0.3);
+    }
+
+    /* =======================================
+       2. KID-FRIENDLY MINI GAME (동물 짝맞추기)
+       ======================================= */
+    .game-box {
+      background: linear-gradient(135deg, rgba(30, 41, 70, 0.8), rgba(20, 26, 45, 0.9));
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
       overflow: hidden;
-      transition: all 0.35s ease;
-      display: flex;
-      flex-direction: column;
     }
 
-    .project-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--primary);
-      box-shadow: var(--shadow-glow);
-    }
-
-    .project-body {
-      padding: 28px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-tag {
-      font-size: 0.8rem;
-      color: var(--accent-cyan);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .project-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .project-desc {
-      color: var(--text-sub);
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-
-    .project-footer {
+    .game-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .project-link {
-      color: var(--primary-light);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
+    .game-stats {
+      display: flex;
+      gap: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      border-radius: 99px;
+      border: 1px solid var(--border-color);
+      font-weight: 700;
+    }
+
+    .game-stats span {
+      color: var(--accent-amber);
+    }
+
+    .btn-restart {
+      background: linear-gradient(135deg, var(--accent-amber), #f97316);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 99px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-restart:hover {
+      transform: scale(1.05);
+    }
+
+    /* 4x4 Grid Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .card {
+      aspect-ratio: 1;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: var(--radius-sm);
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
-      gap: 6px;
-      transition: gap 0.2s ease;
-    }
-
-    .project-link:hover {
-      gap: 10px;
-      color: #fff;
-    }
-
-    /* Contact Banner */
-    .contact-banner {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
-      border: 1px solid var(--border-glow);
-      border-radius: var(--radius-lg);
-      padding: 60px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-banner h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .contact-banner p {
-      color: var(--text-sub);
-      max-width: 600px;
-      margin: 0 auto 32px;
-      font-size: 1.05rem;
-    }
-
-    .contact-buttons {
-      display: flex;
       justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      font-size: 2.2rem;
+      user-select: none;
     }
 
-    /* Toast Notification */
-    .toast {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--primary);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      z-index: 1000;
+    .card-front {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      color: var(--accent-amber);
+      font-size: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-    .toast.show {
-      transform: translateY(0);
+
+    .card-front:hover {
+      border-color: var(--accent-amber);
+      transform: scale(1.03);
+    }
+
+    .card-back {
+      background: linear-gradient(135deg, #312e81, #4338ca);
+      border: 2px solid var(--accent-cyan);
+      transform: rotateY(180deg);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    }
+
+    .card.matched .card-back {
+      background: linear-gradient(135deg, #065f46, #047857);
+      border-color: var(--accent-green);
+      animation: pulseMatch 0.5s ease;
+    }
+
+    @keyframes pulseMatch {
+      0% { transform: rotateY(180deg) scale(1); }
+      50% { transform: rotateY(180deg) scale(1.15); }
+      100% { transform: rotateY(180deg) scale(1); }
+    }
+
+    /* Win Overlay */
+    .win-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(12, 18, 34, 0.92);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .win-overlay.show {
       opacity: 1;
+      pointer-events: auto;
+    }
+
+    .win-card {
+      text-align: center;
+      background: var(--bg-card);
+      border: 2px solid var(--accent-amber);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 40px rgba(245, 158, 11, 0.4);
+    }
+
+    .win-card h3 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      color: var(--accent-amber);
+      font-family: 'Gowun Dodum', sans-serif;
     }
 
     /* Footer */
@@ -605,267 +579,374 @@
       font-size: 0.9rem;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        margin-top: 40px;
-        text-align: center;
-      }
-      .hero-desc {
-        margin: 0 auto 40px;
-      }
-      .hero-actions {
-        justify-content: center;
-      }
-      .nav-links {
-        display: none;
-      }
+    /* Responsive adjustments */
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .timer-container { grid-template-columns: 1fr; }
+      .cards-grid { gap: 10px; }
+      .card-front, .card-back { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Glow Effects -->
-  <div class="bg-blob blob-1"></div>
-  <div class="bg-blob blob-2"></div>
-  <div class="bg-blob blob-3"></div>
+  <!-- Background Decorative Glows -->
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="bg-glow glow-3"></div>
 
   <!-- Header -->
   <header>
     <div class="nav-container">
       <a href="#" class="logo">
-        <div class="logo-badge">
-          <i class="fa-solid fa-sparkles"></i>
-        </div>
-        <span>MJ.DEV</span>
+        <div class="logo-icon"><i class="fa-solid fa-sparkles"></i></div>
+        <span>MJ.HOME</span>
       </a>
 
-      <ul class="nav-links">
+      <ul class="nav-menu">
         <li><a href="#about">소개</a></li>
-        <li><a href="#skills">기술 스택</a></li>
-        <li><a href="#projects">프로젝트</a></li>
-        <li><a href="#contact">문의하기</a></li>
+        <li><a href="#timer">집중 타이머</a></li>
+        <li><a href="#game">짝맞추기 게임</a></li>
       </ul>
-
-      <a href="#contact" class="btn-contact">연락하기</a>
     </div>
   </header>
 
-  <!-- Hero Section -->
   <main>
-    <section class="hero">
-      <div class="hero-content">
-        <div class="hero-tag">
-          <i class="fa-solid fa-bolt"></i> AI Service Builder & Creator
+    <!-- Hero & Profile Section -->
+    <section id="about" class="hero-grid">
+      <div class="hero-text">
+        <div class="badge-tag">
+          <i class="fa-solid fa-shield-halved"></i> AI 서비스 빌더 & 크리에이터
         </div>
         <h1 class="hero-title">
-          혁신적인 AI 기술로<br />
-          <span class="gradient-text">더 나은 서비스</span>를 만듭니다
+          사람과 AI를 잇는<br />
+          <span class="highlight">실용적인 서비스</span>를 만듭니다
         </h1>
         <p class="hero-desc">
-          안녕하세요! 상상을 현실로 구현하는 AI 개발자/빌더 MJ입니다. 
-          프롬프트 엔지니어링과 웹 기술을 활용해 사용자가 체감할 수 있는 유용한 가치를 빠르게 만들어냅니다.
+          안녕하세요! 임기환(MJ)입니다. 
+          프롬프트 엔지니어링과 웹 기술을 활용해 사용자와 어린이가 모두 쉽게 즐기고 도움을 얻을 수 있는 완성도 높은 서비스를 만듭니다.
         </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary">
-            <i class="fa-solid fa-diagram-project"></i> 프로젝트 둘러보기
-          </a>
-          <a href="https://github.com/mjone2025" target="_blank" class="btn-secondary">
-            <i class="fa-brands fa-github"></i> GitHub 방문
-          </a>
-        </div>
       </div>
 
-      <!-- Interactive Profile Card -->
-      <div class="profile-card">
+      <!-- Profile Summary Card -->
+      <div class="glass-card profile-card">
         <div class="profile-header">
-          <div class="avatar">
-            <i class="fa-solid fa-user-astronaut"></i>
-          </div>
-          <div class="profile-info">
-            <h3>MJ (Im Gihwan)</h3>
+          <div class="avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+          <div class="profile-name">
+            <h3>임기환 (MJ)</h3>
             <p>AI Product Builder</p>
-            <div class="status-badge">
-              <div class="status-dot"></div>
-              <span>새로운 도전 준비 중</span>
-            </div>
           </div>
         </div>
 
-        <div class="profile-details">
-          <div class="detail-item">
-            <label>주요 분야</label>
-            <span>AI 서비스 & 웹 개발</span>
+        <div class="info-list">
+          <div class="info-item">
+            <label>프로젝트</label>
+            <span>ICT_Groom Myhome</span>
           </div>
-          <div class="detail-item">
+          <div class="info-item">
             <label>배포 도구</label>
-            <span>Netlify & GitHub</span>
+            <span>GitHub & Netlify</span>
           </div>
-          <div class="detail-item">
-            <label>목표</label>
-            <span>2달 만에 서비스 출시</span>
+          <div class="info-item">
+            <label>특징</label>
+            <span>No AI Slop / 실용 중심</span>
           </div>
-          <div class="detail-item">
-            <label>위치</label>
+          <div class="info-item">
+            <label>지역</label>
             <span>Seoul, S.Korea</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-      <div class="section-header">
-        <div class="section-subtitle">ABOUT ME</div>
-        <h2 class="section-title">저를 소개합니다</h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="card-icon">
-            <i class="fa-solid fa-brain"></i>
-          </div>
-          <h3>AI 융합 기획 및 실행력</h3>
-          <p>
-            최신 AI 모델과 프롬프트 체이닝 기술을 접목하여 복잡한 비즈니스 문제를 효율적이고 창의적인 웹 서비스로 직관적으로 해결합니다.
-          </p>
+    <!-- SECTION 1: FOCUS TIMER (집중 타이머) -->
+    <section id="timer">
+      <div class="glass-card">
+        <div class="section-title">
+          <i class="fa-solid fa-hourglass-half" style="color: var(--accent-indigo);"></i>
+          집중 타이머 (Focus Timer)
         </div>
+        <p class="section-subtitle">공부나 작업 시간을 효율적으로 관리해 보세요. 원하는 시간을 선택하면 타이머가 작동합니다.</p>
 
-        <div class="about-card">
-          <div class="card-icon">
-            <i class="fa-solid fa-code"></i>
-          </div>
-          <h3>모던 웹 프론트엔드</h3>
-          <p>
-            반응형 웹 디자인, 깔끔한 UI/UX, 직관적인 인터랙션을 구현해 사용자에게 즐겁고 원활한 최상의 경험을 제공합니다.
-          </p>
-        </div>
+        <div class="timer-container">
+          <div class="timer-display-box">
+            <div class="circular-timer">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <linearGradient id="timer-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6366f1" />
+                    <stop offset="100%" stop-color="#06b6d4" />
+                  </linearGradient>
+                </defs>
+                <circle class="timer-bg-circle" cx="100" cy="100" r="90" />
+                <circle class="timer-progress-circle" id="timer-progress" cx="100" cy="100" r="90" />
+              </svg>
+              <div class="timer-text" id="timer-countdown">05:00</div>
+            </div>
 
-        <div class="about-card">
-          <div class="card-icon">
-            <i class="fa-solid fa-rocket"></i>
-          </div>
-          <h3>빠른 프로토타이핑 & 배포</h3>
-          <p>
-            아이디어 구상부터 GitHub ➔ Netlify 자동 연동 배포까지 빠른 사이클로 서비스를 검증하고 완성해 나갑니다.
-          </p>
-        </div>
-      </div>
-    </section>
+            <div class="timer-presets">
+              <button class="btn-preset" onclick="setTimer(1)">1분</button>
+              <button class="btn-preset active" onclick="setTimer(5)">5분</button>
+              <button class="btn-preset" onclick="setTimer(10)">10분</button>
+              <button class="btn-preset" onclick="setTimer(25)">25분 (뽀모도로)</button>
+            </div>
 
-    <!-- Skills Section -->
-    <section id="skills">
-      <div class="skills-wrapper">
-        <div class="section-header" style="margin-bottom: 30px;">
-          <div class="section-subtitle">SKILLS & TOOLS</div>
-          <h2 class="section-title">보유 역량 및 기술 스택</h2>
-        </div>
-
-        <div class="skills-chips">
-          <div class="chip"><i class="fa-solid fa-robot"></i> ChatGPT & Claude API</div>
-          <div class="chip"><i class="fa-solid fa-link"></i> Prompt Chaining</div>
-          <div class="chip"><i class="fa-brands fa-html5"></i> HTML5 & CSS3</div>
-          <div class="chip"><i class="fa-brands fa-js"></i> JavaScript (ES6+)</div>
-          <div class="chip"><i class="fa-brands fa-github"></i> Git & GitHub</div>
-          <div class="chip"><i class="fa-solid fa-cloud"></i> Netlify Deployment</div>
-          <div class="chip"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Image Generation</div>
-          <div class="chip"><i class="fa-solid fa-chart-line"></i> 서비스 기획 & 피치덱</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-      <div class="section-header">
-        <div class="section-subtitle">PORTFOLIO</div>
-        <h2 class="section-title">대표 프로젝트</h2>
-      </div>
-
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-body">
-            <div class="project-tag">NETLIFY HOMEWORK</div>
-            <h3 class="project-title">Myhome 자기소개 웹페이지</h3>
-            <p class="project-desc">
-              GitHub과 Netlify 자동 연동 시스템을 활용해 배포한 세련되고 현대적인 개인 자기소개 & 포트폴리오 웹사이트입니다.
-            </p>
-            <div class="project-footer">
-              <span style="font-size: 0.85rem; color: var(--text-muted);">HTML / CSS / JS</span>
-              <a href="#" class="project-link">자세히 보기 <i class="fa-solid fa-arrow-right"></i></a>
+            <div class="timer-controls">
+              <button class="btn-timer-action btn-start" id="btn-toggle-timer" onclick="toggleTimer()">
+                <i class="fa-solid fa-play"></i> 시작하기
+              </button>
+              <button class="btn-timer-action btn-stop" onclick="resetTimer()">
+                <i class="fa-solid fa-rotate-right"></i> 초기화
+              </button>
             </div>
           </div>
-        </div>
 
-        <div class="project-card">
-          <div class="project-body">
-            <div class="project-tag">PROMPT CHAINING</div>
-            <h3 class="project-title">소상공인 POS/SaaS 제안서</h3>
-            <p class="project-desc">
-              체이닝 프롬프트 기술을 활용하여 소상공인을 위한 POS 및 SaaS 서비스를 분석하고 발전시킨 인터랙티브 웹 제안서입니다.
-            </p>
-            <div class="project-footer">
-              <span style="font-size: 0.85rem; color: var(--text-muted);">AI Prompting / Web</span>
-              <a href="../07-28/index.html" class="project-link">페이지 이동 <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-body">
-            <div class="project-tag">PITCH DECK</div>
-            <h3 class="project-title">Bootnow 피치덱 & 사업계획</h3>
-            <p class="project-desc">
-              문제 정의부터 비즈니스 모델, 시장 규모, 로드맵까지 종합적으로 다룬 AI 기반 2달 서비스 출시 피치덱 자산입니다.
-            </p>
-            <div class="project-footer">
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Presentation / Business</span>
-              <a href="../pitch_deck/" class="project-link">자료 보기 <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div style="padding-left: 10px;">
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; color: var(--accent-indigo);">
+              💡 타이머 사용 팁
+            </h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; color: var(--text-sub);">
+              <li style="display: flex; gap: 10px; align-items: flex-start;">
+                <i class="fa-solid fa-check-circle" style="color: var(--accent-green); margin-top: 4px;"></i>
+                <span><strong>25분 집중, 5분 휴식</strong>의 뽀모도로 기법으로 학습 효율을 극대화하세요.</span>
+              </li>
+              <li style="display: flex; gap: 10px; align-items: flex-start;">
+                <i class="fa-solid fa-check-circle" style="color: var(--accent-green); margin-top: 4px;"></i>
+                <span>타이머가 완료되면 알림 소리와 함께 시각적 완료 효과가 작동합니다.</span>
+              </li>
+              <li style="display: flex; gap: 10px; align-items: flex-start;">
+                <i class="fa-solid fa-check-circle" style="color: var(--accent-green); margin-top: 4px;"></i>
+                <span>아래 '신나는 동물의 숲 짝맞추기' 게임으로 머리를 식히는 쉬는 시간을 가져보세요!</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Banner -->
-    <section id="contact">
-      <div class="contact-banner">
-        <h2>함께 새로운 가치를 만들어 갈까요?</h2>
-        <p>궁금한 점이 있거나 협업/프로젝트 문의가 있으시면 언제든 편하게 연락해 주세요!</p>
-        <div class="contact-buttons">
-          <button class="btn-primary" onclick="copyEmail()">
-            <i class="fa-solid fa-envelope"></i> 이메일 복사하기
-          </button>
-          <a href="https://github.com/mjone2025" target="_blank" class="btn-secondary">
-            <i class="fa-brands fa-github"></i> GitHub 프로필
-          </a>
+    <!-- SECTION 2: KID-FRIENDLY MINI GAME (동물 짝맞추기 게임) -->
+    <section id="game">
+      <div class="game-box">
+        <div class="game-header">
+          <div>
+            <div class="section-title" style="color: var(--accent-amber);">
+              <i class="fa-solid fa-paw"></i> 신나는 동물의 숲 짝맞추기
+            </div>
+            <p class="section-subtitle" style="margin-bottom: 0;">어린이가 가장 좋아하는 동물 카드를 뒤집어 똑같은 짝을 찾아보세요!</p>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="game-stats">
+              <div>시도 횟수: <span id="game-moves">0</span></div>
+              <div>맞춘 짝: <span id="game-pairs">0 / 8</span></div>
+            </div>
+            <button class="btn-restart" onclick="initGame()">
+              <i class="fa-solid fa-arrows-rotate"></i> 다시 시작
+            </button>
+          </div>
+        </div>
+
+        <!-- 4x4 Memory Cards Grid -->
+        <div class="cards-grid" id="cards-grid">
+          <!-- Dynamically generated via JS -->
+        </div>
+
+        <!-- Win Overlay -->
+        <div class="win-overlay" id="win-overlay">
+          <div class="win-card">
+            <h3>🎉 축하합니다! 🎉</h3>
+            <p style="font-size: 1.1rem; color: var(--text-sub); margin-bottom: 20px;">
+              모든 동물 짝을 <strong id="final-moves" style="color: var(--accent-amber);">0</strong>번 만에 모두 찾았어요!
+            </p>
+            <button class="btn-restart" style="padding: 12px 32px; font-size: 1.1rem;" onclick="initGame()">
+              🎮 한 번 더 하기!
+            </button>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Toast Notification -->
-  <div id="toast" class="toast">
-    <i class="fa-solid fa-check-circle"></i> 이메일 주소가 복사되었습니다!
-  </div>
-
   <!-- Footer -->
   <footer>
-    <p>© 2026 MJ. All rights reserved. Designed & Built with AI for Netlify Homework.</p>
+    <p>© 2026 MJ (임기환). Built for Netlify Homework without AI Slop.</p>
   </footer>
 
   <!-- JavaScript -->
   <script>
-    function copyEmail() {
-      const email = "mjonesamkris@gmail.com";
-      navigator.clipboard.writeText(email).then(() => {
-        const toast = document.getElementById("toast");
-        toast.classList.add("show");
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 2500);
+    /* =======================================
+       1. TIMER LOGIC
+       ======================================= */
+    let timerTotalSeconds = 300; // default 5 mins
+    let timerRemainingSeconds = 300;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    const countdownEl = document.getElementById('timer-countdown');
+    const progressCircle = document.getElementById('timer-progress');
+    const toggleBtn = document.getElementById('btn-toggle-timer');
+    const circumference = 565; // 2 * PI * 90
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerRemainingSeconds / 60);
+      const secs = timerRemainingSeconds % 60;
+      countdownEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      
+      const progressFraction = timerRemainingSeconds / timerTotalSeconds;
+      const offset = circumference * (1 - progressFraction);
+      progressCircle.style.strokeDashoffset = offset;
+    }
+
+    function setTimer(minutes) {
+      resetTimer();
+      timerTotalSeconds = minutes * 60;
+      timerRemainingSeconds = timerTotalSeconds;
+      
+      document.querySelectorAll('.btn-preset').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.includes(minutes + '분')) {
+          btn.classList.add('active');
+        }
+      });
+      updateTimerDisplay();
+    }
+
+    function toggleTimer() {
+      if (isTimerRunning) {
+        pauseTimer();
+      } else {
+        startTimer();
+      }
+    }
+
+    function startTimer() {
+      if (timerRemainingSeconds <= 0) return;
+      isTimerRunning = true;
+      toggleBtn.innerHTML = '<i class="fa-solid fa-pause"></i> 일시정지';
+      toggleBtn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+
+      timerInterval = setInterval(() => {
+        timerRemainingSeconds--;
+        updateTimerDisplay();
+
+        if (timerRemainingSeconds <= 0) {
+          pauseTimer();
+          alert('🔔 집중 시간이 끝났습니다! 수고하셨습니다.');
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      isTimerRunning = false;
+      clearInterval(timerInterval);
+      toggleBtn.innerHTML = '<i class="fa-solid fa-play"></i> 시작하기';
+      toggleBtn.style.background = 'linear-gradient(135deg, var(--accent-indigo), var(--accent-purple))';
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      timerRemainingSeconds = timerTotalSeconds;
+      updateTimerDisplay();
+    }
+
+    /* =======================================
+       2. KID-FRIENDLY MEMORY GAME LOGIC
+       ======================================= */
+    const emojis = ['🦁', '🐶', '🐱', '🐰', '🦊', '🐼', '🐯', '🐨'];
+    let cardsArray = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let moveCount = 0;
+    let isLockingGrid = false;
+
+    const cardsGrid = document.getElementById('cards-grid');
+    const movesEl = document.getElementById('game-moves');
+    const pairsEl = document.getElementById('game-pairs');
+    const winOverlay = document.getElementById('win-overlay');
+    const finalMovesEl = document.getElementById('final-moves');
+
+    function initGame() {
+      matchedPairs = 0;
+      moveCount = 0;
+      flippedCards = [];
+      isLockingGrid = false;
+      movesEl.textContent = '0';
+      pairsEl.textContent = '0 / 8';
+      winOverlay.classList.remove('show');
+
+      // Duplicate emojis to make 8 pairs (16 cards total)
+      cardsArray = [...emojis, ...emojis];
+      // Shuffle array
+      cardsArray.sort(() => Math.random() - 0.5);
+
+      // Render cards
+      cardsGrid.innerHTML = '';
+      cardsArray.forEach((emoji, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.emoji = emoji;
+        card.dataset.index = index;
+
+        card.innerHTML = `
+          <div class="card-inner">
+            <div class="card-front"><i class="fa-solid fa-question"></i></div>
+            <div class="card-back">${emoji}</div>
+          </div>
+        `;
+
+        card.addEventListener('click', () => handleCardClick(card));
+        cardsGrid.appendChild(card);
       });
     }
+
+    function handleCardClick(card) {
+      if (isLockingGrid || card.classList.contains('flipped') || card.classList.contains('matched')) {
+        return;
+      }
+
+      card.classList.add('flipped');
+      flippedCards.push(card);
+
+      if (flippedCards.length === 2) {
+        moveCount++;
+        movesEl.textContent = moveCount;
+        checkMatch();
+      }
+    }
+
+    function checkMatch() {
+      isLockingGrid = true;
+      const [card1, card2] = flippedCards;
+
+      if (card1.dataset.emoji === card2.dataset.emoji) {
+        // Matched!
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        matchedPairs++;
+        pairsEl.textContent = `${matchedPairs} / 8`;
+        flippedCards = [];
+        isLockingGrid = false;
+
+        if (matchedPairs === 8) {
+          setTimeout(() => {
+            finalMovesEl.textContent = moveCount;
+            winOverlay.classList.add('show');
+          }, 500);
+        }
+      } else {
+        // Not a match -> flip back after 900ms
+        setTimeout(() => {
+          card1.classList.remove('flipped');
+          card2.classList.remove('flipped');
+          flippedCards = [];
+          isLockingGrid = false;
+        }, 900);
+      }
+    }
+
+    // Initialize display & game on load
+    updateTimerDisplay();
+    initGame();
   </script>
 </body>
 </html>
