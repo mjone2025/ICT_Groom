@@ -30,7 +30,6 @@
       --accent: #b4471f; /* Warm Terracotta Accent */
       --accent-soft: #f3e7e0;
       --accent-green: #2e7d32;
-      --accent-amber: #d97706;
       --serif: 'Georgia', 'Gowun Batang', serif;
       --sans: 'Pretendard', 'Noto Sans KR', sans-serif;
     }
@@ -136,15 +135,15 @@
 
     /* Hero Section with Sidebar */
     .hero {
-      padding: 64px 0 60px;
+      padding: 64px 0;
       border-bottom: 1px solid var(--line);
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 44px;
-      align-items: start;
+      gap: 48px;
+      align-items: center; /* Center align for perfect vertical balance */
     }
 
     .who {
@@ -216,54 +215,13 @@
       border-color: var(--ink);
     }
 
-    /* Side Profile Card + Compact Timer */
-    .profile-card {
+    /* COMPACT BALANCED RAMEN TIMER WIDGET (Hero Right) */
+    .timer-widget-card {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 16px;
-      padding: 24px;
+      padding: 22px 24px;
       box-shadow: 0 4px 16px rgba(26, 24, 21, 0.04);
-    }
-
-    .profile-title {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .profile-sub {
-      color: var(--sub);
-      font-size: 13.5px;
-      margin-bottom: 16px;
-    }
-
-    .info-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 13.5px;
-      border-top: 1px solid var(--line);
-      padding-top: 14px;
-      margin-bottom: 20px;
-    }
-
-    .info-list li {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .info-list span {
-      color: var(--soft);
-    }
-
-    /* COMPACT CREATIVE TIMER (Inside Profile Sidebar) */
-    .compact-timer {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px;
     }
 
     .ct-head {
@@ -274,7 +232,7 @@
     }
 
     .ct-title {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--ink);
       display: flex;
@@ -287,23 +245,23 @@
       font-weight: 700;
       color: var(--accent);
       background: var(--accent-soft);
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 999px;
     }
 
     .cooking-visual-box {
       text-align: center;
-      padding: 12px 8px;
-      background: var(--panel);
+      padding: 14px;
+      background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 14px;
     }
 
     .cooking-emoji {
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       transition: transform 0.3s ease;
     }
 
@@ -318,10 +276,11 @@
       font-size: 28px;
       font-weight: 700;
       color: var(--ink);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      text-align: center;
     }
 
-    /* Range Slider for time scrubbing */
+    /* Range Slider Scrubber */
     .scrubber-wrap {
       margin-bottom: 14px;
     }
@@ -329,7 +288,7 @@
     .scrubber-wrap label {
       display: flex;
       justify-content: space-between;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--soft);
       margin-bottom: 4px;
@@ -363,13 +322,13 @@
 
     .ct-presets button {
       flex: 1;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--sub);
-      background: var(--panel);
+      background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 6px;
-      padding: 5px 0;
+      padding: 6px 0;
       cursor: pointer;
     }
 
@@ -386,17 +345,17 @@
 
     .ct-controls button {
       flex: 1;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 700;
-      padding: 8px 0;
-      border-radius: 7px;
+      padding: 9px 0;
+      border-radius: 8px;
       cursor: pointer;
       border: 1px solid transparent;
     }
 
     #ctStart { background: var(--accent); color: #fff; }
     #ctStart:hover { background: #9c3d1a; }
-    #ctReset { background: var(--panel); color: var(--ink); border-color: var(--line2); }
+    #ctReset { background: var(--paper); color: var(--ink); border-color: var(--line2); }
 
     /* About Section Cards */
     .about-grid {
@@ -683,7 +642,7 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION WITH SIDEBAR PROFILE & TIMER -->
+  <!-- HERO SECTION WITH PERFECT VISUAL BALANCE -->
   <header class="hero">
     <div class="wrap">
       <div class="hero-grid">
@@ -703,57 +662,45 @@
           </div>
         </div>
 
-        <!-- RIGHT: SIDEBAR PROFILE CARD + CREATIVE TIMER -->
+        <!-- RIGHT: BALANCED SLEEK TIMER WIDGET (중복 정보 제거로 좌우 균형 완벽화) -->
         <div class="hero-right">
-          <div class="profile-card">
-            <div class="profile-title">김그룸 (Groom Kim)</div>
-            <div class="profile-sub">AI Product Creator & Developer</div>
-
-            <ul class="info-list">
-              <li><span>소속 프로젝트</span> <b>ICT_Groom Myhome</b></li>
-              <li><span>배포 도구</span> <b>GitHub & Netlify</b></li>
-              <li><span>지역</span> <b>Seoul, S.Korea</b></li>
-            </ul>
-
-            <!-- COMPACT CREATIVE TIMER: RAMEN COOKING MASTER 🍜 -->
-            <div class="compact-timer">
-              <div class="ct-head">
-                <div class="ct-title">
-                  <i class="fa-solid fa-fire" style="color: var(--accent);"></i> 맛있는 라면 타이머
-                </div>
-                <span class="ct-stage-badge" id="ramen-stage-name">1단계: 물 끓이기 💧</span>
+          <div class="timer-widget-card">
+            <div class="ct-head">
+              <div class="ct-title">
+                <i class="fa-solid fa-fire" style="color: var(--accent);"></i> 라면 조리 타이머
               </div>
+              <span class="ct-stage-badge" id="ramen-stage-name">1단계: 물 끓이기 💧</span>
+            </div>
 
-              <!-- Visual Stage Box -->
-              <div class="cooking-visual-box">
-                <div class="cooking-emoji" id="ramen-emoji">🫖</div>
-                <div class="cooking-desc" id="ramen-desc">냄비에 물을 올리고 끓이기 시작합니다!</div>
-              </div>
+            <!-- Visual Stage Box -->
+            <div class="cooking-visual-box">
+              <div class="cooking-emoji" id="ramen-emoji">🫖</div>
+              <div class="cooking-desc" id="ramen-desc">냄비에 물을 올리고 끓이기 시작합니다!</div>
+            </div>
 
-              <!-- Digital Countdown Display -->
-              <div class="ct-time-display" id="ctDisplay" style="text-align: center;">03:00</div>
+            <!-- Digital Countdown Display -->
+            <div class="ct-time-display" id="ctDisplay">03:00</div>
 
-              <!-- Range Slider Scrubber (스크롤로 변화 미리보기) -->
-              <div class="scrubber-wrap">
-                <label>
-                  <span>변화 과정 조절 (스크롤)</span>
-                  <span id="slider-pct">0%</span>
-                </label>
-                <input type="range" class="time-slider" id="timeScrubber" min="0" max="100" value="0" oninput="onScrubberChange(this.value)">
-              </div>
+            <!-- Range Slider Scrubber (스크롤로 변화 미리보기) -->
+            <div class="scrubber-wrap">
+              <label>
+                <span>변화 미리보기 (슬라이더)</span>
+                <span id="slider-pct">0%</span>
+              </label>
+              <input type="range" class="time-slider" id="timeScrubber" min="0" max="100" value="0" oninput="onScrubberChange(this.value)">
+            </div>
 
-              <!-- Presets -->
-              <div class="ct-presets">
-                <button data-sec="60" onclick="setTimerSec(60, this)">1분</button>
-                <button data-sec="180" class="on" onclick="setTimerSec(180, this)">3분 (라면)</button>
-                <button data-sec="300" onclick="setTimerSec(300, this)">5분</button>
-              </div>
+            <!-- Presets -->
+            <div class="ct-presets">
+              <button data-sec="60" onclick="setTimerSec(60, this)">1분</button>
+              <button data-sec="180" class="on" onclick="setTimerSec(180, this)">3분 (라면)</button>
+              <button data-sec="300" onclick="setTimerSec(300, this)">5분</button>
+            </div>
 
-              <!-- Controls -->
-              <div class="ct-controls">
-                <button id="ctStart" onclick="toggleTimer()">시작하기</button>
-                <button id="ctReset" onclick="resetTimer()">초기화</button>
-              </div>
+            <!-- Controls -->
+            <div class="ct-controls">
+              <button id="ctStart" onclick="toggleTimer()">시작하기</button>
+              <button id="ctReset" onclick="resetTimer()">초기화</button>
             </div>
           </div>
         </div>
@@ -803,7 +750,7 @@
           <div class="proj-tag">NETLIFY DEPLOYMENT</div>
           <h3>Myhome 자기소개 웹페이지</h3>
           <p>
-            Warm Paper 디자인과 측면 라면 조리 타이머, 하단 어린이 짝맞추기 게임이 결합된 공식 제출 사이트입니다.
+            Warm Paper 디자인과 라면 조리 타이머, 하단 어린이 짝맞추기 게임이 결합된 공식 제출 사이트입니다.
           </p>
           <a href="#" class="proj-link">현재 페이지 뷰 <i class="fa-solid fa-arrow-right"></i></a>
         </div>
@@ -951,9 +898,9 @@
       ramenDesc.textContent = stage.desc;
       stageName.textContent = stage.name;
 
-      // Subtle scale pulse on emoji change
-      ramenEmoji.style.transform = 'scale(1.15)';
-      setTimeout(() => { ramenEmoji.style.transform = 'scale(1)'; }, 250);
+      // Scale bounce effect
+      ramenEmoji.style.transform = 'scale(1.12)';
+      setTimeout(() => { ramenEmoji.style.transform = 'scale(1)'; }, 200);
     }
 
     function updateTimerUI() {
@@ -961,12 +908,10 @@
       const secs = timerRemainingSec % 60;
       ctDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 
-      // Progress percentage (0% to 100%)
       const progressPct = ((timerTotalSec - timerRemainingSec) / timerTotalSec) * 100;
       applyStageByProgress(progressPct);
     }
 
-    // Called when dragging range slider (Manual Scrubber)
     function onScrubberChange(val) {
       if (isRunning) pauseTimer();
       const pct = parseFloat(val);
@@ -1118,7 +1063,7 @@
 
     function copyEmail() {
       navigator.clipboard.writeText("mjonesamkris@gmail.com").then(() => {
-        alert("이메일 주소(mjonesamkris@gmail.com)가 복사되었습니다!");
+        alert("이메일 주소(mjonesamkris@gmail.com)가 클립보드에 복사되었습니다!");
       });
     }
 
