@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build & Dist outputs
+dist/
+build/
+**/dist/
+**/build/
+.wrangler/
+.vinext/
+.openai/
+
+# Large binary files & archives (lecture materials)
+*.pdf
+*.zip
+
+# Logs & temp files
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
