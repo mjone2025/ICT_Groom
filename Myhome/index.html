@@ -33,7 +33,7 @@
       --accent-green: #2e7d32;
       --serif: 'Georgia', 'Gowun Batang', serif;
       --sans: 'Pretendard', 'Noto Sans KR', sans-serif;
-      --sidebar-width: 270px;
+      --sidebar-width: 260px;
     }
 
     html {
@@ -91,7 +91,7 @@
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 16px;
+      padding: 14px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -99,8 +99,8 @@
     }
 
     .sidebar-avatar {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: var(--accent-soft);
       color: var(--accent);
@@ -199,7 +199,7 @@
     }
 
     .content-wrap {
-      max-width: 900px;
+      max-width: 940px;
       margin: 0 auto;
     }
 
@@ -231,22 +231,30 @@
       max-width: 640px;
     }
 
-    /* Hero Section */
+    /* Hero Section 2-Column Grid (Intro Left + Timer Right) */
     .hero {
-      padding: 32px 0 56px;
+      padding: 36px 0 56px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
     }
 
     .who {
       font-size: 14px;
       font-weight: 600;
       color: var(--sub);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       letter-spacing: 0.02em;
     }
 
     h1 {
       font-family: var(--serif);
-      font-size: 46px;
+      font-size: 44px;
       line-height: 1.14;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -259,9 +267,8 @@
     }
 
     .tagline {
-      font-size: 16.5px;
+      font-size: 15.5px;
       color: var(--sub);
-      max-width: 580px;
       margin-bottom: 28px;
     }
 
@@ -274,7 +281,7 @@
     .btn {
       font-size: 14px;
       font-weight: 600;
-      padding: 12px 24px;
+      padding: 12px 22px;
       border-radius: 8px;
       transition: all 0.2s;
       border: 1px solid transparent;
@@ -304,6 +311,147 @@
       background: #fff;
       border-color: var(--ink);
     }
+
+    /* SLEEK TIMER WIDGET (Positioned Right in Hero) */
+    .timer-widget-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px 24px;
+      box-shadow: 0 4px 16px rgba(26, 24, 21, 0.04);
+    }
+
+    .ct-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .ct-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ct-stage-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .cooking-visual-box {
+      text-align: center;
+      padding: 12px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .cooking-emoji {
+      font-size: 2.6rem;
+      line-height: 1;
+      margin-bottom: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .cooking-desc {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--sub);
+    }
+
+    .ct-time-display {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .scrubber-wrap {
+      margin-bottom: 12px;
+    }
+
+    .scrubber-wrap label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--soft);
+      margin-bottom: 4px;
+    }
+
+    .time-slider {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      background: var(--line2);
+      border-radius: 99px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .time-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(180,71,31,0.4);
+    }
+
+    .ct-presets {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .ct-presets button {
+      flex: 1;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sub);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 6px 0;
+      cursor: pointer;
+    }
+
+    .ct-presets button:hover, .ct-presets button.on {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .ct-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .ct-controls button {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    #ctStart { background: var(--accent); color: #fff; }
+    #ctStart:hover { background: #9c3d1a; }
+    #ctReset { background: var(--paper); color: var(--ink); border-color: var(--line2); }
 
     /* About Section Cards */
     .about-grid {
@@ -426,148 +574,6 @@
       color: var(--accent);
       background: var(--accent-soft);
     }
-
-    /* CREATIVE RAMEN COOKING TIMER SECTION */
-    .timer-section-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 32px;
-      max-width: 580px;
-      margin-top: 28px;
-    }
-
-    .ct-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .ct-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .ct-stage-badge {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-soft);
-      padding: 4px 12px;
-      border-radius: 999px;
-    }
-
-    .cooking-visual-box {
-      text-align: center;
-      padding: 20px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      margin-bottom: 18px;
-    }
-
-    .cooking-emoji {
-      font-size: 3.5rem;
-      line-height: 1;
-      margin-bottom: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .cooking-desc {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--sub);
-    }
-
-    .ct-time-display {
-      font-family: var(--serif);
-      font-size: 34px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 14px;
-      text-align: center;
-    }
-
-    .scrubber-wrap {
-      margin-bottom: 18px;
-    }
-
-    .scrubber-wrap label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--soft);
-      margin-bottom: 6px;
-    }
-
-    .time-slider {
-      width: 100%;
-      height: 6px;
-      -webkit-appearance: none;
-      background: var(--line2);
-      border-radius: 99px;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .time-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--accent);
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(180,71,31,0.4);
-    }
-
-    .ct-presets {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .ct-presets button {
-      flex: 1;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--sub);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 8px 0;
-      cursor: pointer;
-    }
-
-    .ct-presets button:hover, .ct-presets button.on {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-soft);
-    }
-
-    .ct-controls {
-      display: flex;
-      gap: 10px;
-    }
-
-    .ct-controls button {
-      flex: 1;
-      font-size: 14px;
-      font-weight: 700;
-      padding: 10px 0;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    #ctStart { background: var(--accent); color: #fff; }
-    #ctStart:hover { background: #9c3d1a; }
-    #ctReset { background: var(--paper); color: var(--ink); border-color: var(--line2); }
 
     /* KID-FRIENDLY GAME AT THE BOTTOM */
     .game-section {
@@ -725,6 +731,7 @@
         max-width: 100%;
         padding: 24px 20px 60px;
       }
+      .hero-grid { grid-template-columns: 1fr; }
       .about-grid, .projects-grid { grid-template-columns: 1fr; }
       h1 { font-size: 36px; }
     }
@@ -747,10 +754,10 @@
 
     <!-- Navigation Menu -->
     <ul class="sidebar-menu">
-      <li><a href="#about" class="active"><i class="fa-solid fa-user"></i> 자기소개</a></li>
+      <li><a href="#present" class="active"><i class="fa-solid fa-user"></i> 자기소개</a></li>
+      <li><a href="#about"><i class="fa-solid fa-star"></i> 핵심 역량</a></li>
       <li><a href="#projects"><i class="fa-solid fa-folder-open"></i> 대표 포트폴리오</a></li>
       <li><a href="#skills"><i class="fa-solid fa-code"></i> 기술 스택</a></li>
-      <li><a href="#timer-section"><i class="fa-solid fa-fire"></i> 라면 조리 타이머</a></li>
       <li><a href="#game-section"><i class="fa-solid fa-paw"></i> 어린이 게임</a></li>
       <li><a href="#contact"><i class="fa-solid fa-envelope"></i> 연락처</a></li>
     </ul>
@@ -770,18 +777,68 @@
   <main class="main-content">
     <div class="content-wrap">
 
-      <!-- HERO SECTION -->
+      <!-- HERO SECTION (Left Intro + Right Timer Widget) -->
       <section class="hero" id="present">
-        <div class="overline">PORTFOLIO & INTRO</div>
-        <p class="who">AI Service Builder · Web Developer</p>
-        <h1>안녕하세요,<br><em>김그룸</em>입니다.</h1>
-        <p class="tagline">
-          문제를 발굴하고 사용자가 즐겁게 머물 수 있는 실질적인 서비스를 만듭니다. 
-          AI 기술과 직관적인 프론트엔드 경험을 결합하는 포트폴리오 공간입니다.
-        </p>
-        <div class="cta">
-          <a class="btn p" href="#projects"><i class="fa-solid fa-folder-open"></i> 포트폴리오 보기</a>
-          <a class="btn s" href="#contact"><i class="fa-solid fa-envelope"></i> 연락하기</a>
+        <div class="hero-grid">
+
+          <!-- LEFT: INTRO TEXT -->
+          <div class="hero-left">
+            <div class="overline">PORTFOLIO & INTRO</div>
+            <p class="who">AI Service Builder · Web Developer</p>
+            <h1>안녕하세요,<br><em>김그룸</em>입니다.</h1>
+            <p class="tagline">
+              문제를 발굴하고 사용자가 즐겁게 머물 수 있는 실질적인 서비스를 만듭니다. 
+              AI 기술과 직관적인 프론트엔드 경험을 결합하는 포트폴리오 공간입니다.
+            </p>
+            <div class="cta">
+              <a class="btn p" href="#projects"><i class="fa-solid fa-folder-open"></i> 포트폴리오 보기</a>
+              <a class="btn s" href="#contact"><i class="fa-solid fa-envelope"></i> 연락하기</a>
+            </div>
+          </div>
+
+          <!-- RIGHT: RAMEN TIMER WIDGET (Hero 오른쪽에 위치!) -->
+          <div class="hero-right">
+            <div class="timer-widget-card">
+              <div class="ct-head">
+                <div class="ct-title">
+                  <i class="fa-solid fa-fire" style="color: var(--accent);"></i> 라면 조리 타이머
+                </div>
+                <span class="ct-stage-badge" id="ramen-stage-name">1단계: 물 끓이기 💧</span>
+              </div>
+
+              <!-- Visual Stage Box -->
+              <div class="cooking-visual-box">
+                <div class="cooking-emoji" id="ramen-emoji">🫖</div>
+                <div class="cooking-desc" id="ramen-desc">냄비에 물을 올리고 끓이기 시작합니다!</div>
+              </div>
+
+              <!-- Digital Countdown Display -->
+              <div class="ct-time-display" id="ctDisplay">03:00</div>
+
+              <!-- Range Slider Scrubber (스크롤로 변화 미리보기) -->
+              <div class="scrubber-wrap">
+                <label>
+                  <span>조리 경과 조절 (슬라이더 바)</span>
+                  <span id="slider-pct">0%</span>
+                </label>
+                <input type="range" class="time-slider" id="timeScrubber" min="0" max="100" value="0" oninput="onScrubberChange(this.value)">
+              </div>
+
+              <!-- Presets -->
+              <div class="ct-presets">
+                <button data-sec="60" onclick="setTimerSec(60, this)">1분</button>
+                <button data-sec="180" class="on" onclick="setTimerSec(180, this)">3분 (라면)</button>
+                <button data-sec="300" onclick="setTimerSec(300, this)">5분</button>
+              </div>
+
+              <!-- Controls -->
+              <div class="ct-controls">
+                <button id="ctStart" onclick="toggleTimer()">시작하기</button>
+                <button id="ctReset" onclick="resetTimer()">초기화</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -865,54 +922,7 @@
         </div>
       </section>
 
-      <!-- SECTION 4: CREATIVE RAMEN COOKING TIMER -->
-      <section id="timer-section">
-        <div class="overline">INNOVATIVE TIMER</div>
-        <h2 class="title">보글보글 라면 조리 타이머 🍜</h2>
-        <p class="lead">시간의 흐름에 따라 라면이 맛있게 익어갑니다. 슬라이더 바를 움직여 단계별 변화를 즉시 확인해 보세요!</p>
-
-        <div class="timer-section-card">
-          <div class="ct-head">
-            <div class="ct-title">
-              <i class="fa-solid fa-fire" style="color: var(--accent);"></i> 라면 조리 타이머
-            </div>
-            <span class="ct-stage-badge" id="ramen-stage-name">1단계: 물 끓이기 💧</span>
-          </div>
-
-          <!-- Visual Stage Box -->
-          <div class="cooking-visual-box">
-            <div class="cooking-emoji" id="ramen-emoji">🫖</div>
-            <div class="cooking-desc" id="ramen-desc">냄비에 물을 올리고 보글보글 끓이기 시작합니다!</div>
-          </div>
-
-          <!-- Digital Countdown Display -->
-          <div class="ct-time-display" id="ctDisplay">03:00</div>
-
-          <!-- Range Slider Scrubber (스크롤로 변화 미리보기) -->
-          <div class="scrubber-wrap">
-            <label>
-              <span>조리 경과 조절 (슬라이더 바)</span>
-              <span id="slider-pct">0%</span>
-            </label>
-            <input type="range" class="time-slider" id="timeScrubber" min="0" max="100" value="0" oninput="onScrubberChange(this.value)">
-          </div>
-
-          <!-- Presets -->
-          <div class="ct-presets">
-            <button data-sec="60" onclick="setTimerSec(60, this)">1분</button>
-            <button data-sec="180" class="on" onclick="setTimerSec(180, this)">3분 (라면)</button>
-            <button data-sec="300" onclick="setTimerSec(300, this)">5분</button>
-          </div>
-
-          <!-- Controls -->
-          <div class="ct-controls">
-            <button id="ctStart" onclick="toggleTimer()">시작하기</button>
-            <button id="ctReset" onclick="resetTimer()">초기화</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 5: KID-FRIENDLY MINI GAME (하단 보너스 영역) -->
+      <!-- SECTION 4: KID-FRIENDLY MINI GAME (하단 보너스 영역) -->
       <section id="game-section">
         <div class="game-section">
           <div class="overline">BONUS MINI GAME</div>
@@ -938,7 +948,7 @@
         </div>
       </section>
 
-      <!-- SECTION 6: CONTACT -->
+      <!-- SECTION 5: CONTACT -->
       <section id="contact" style="text-align: center; border-bottom: none; padding-bottom: 20px;">
         <div class="overline">GET IN TOUCH</div>
         <h2 class="title" style="font-size: 34px;">함께 소통해요</h2>
