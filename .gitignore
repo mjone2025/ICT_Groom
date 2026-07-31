@@ -1,8 +1,15 @@
-# Dependencies
+# Ignore everything in root by default
+/*
+
+# Whitelist: Allow only .gitignore and the 3 specified folders
+!.gitignore
+!/Myhome/
+!/goorm_ai/
+!/goorm_course/
+
+# Common build, dependency, and log exclusions inside whitelisted folders
 node_modules/
 **/node_modules/
-
-# Build & Dist outputs
 dist/
 build/
 **/dist/
@@ -10,21 +17,10 @@ build/
 .wrangler/
 .vinext/
 .openai/
-
-# Large binary files & lecture materials
-lectures/
-*.pdf
-*.zip
-
-# Logs & temp files
 *.log
-
-# Environment variables
 .env
 .env.*
 !.env.example
-
-# OS generated files
 .DS_Store
 Thumbs.db
 desktop.ini
