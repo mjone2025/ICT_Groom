@@ -11,7 +11,8 @@ build/
 .vinext/
 .openai/
 
-# Large binary files & archives (lecture materials)
+# Large binary files & lecture materials
+lectures/
 *.pdf
 *.zip
 
