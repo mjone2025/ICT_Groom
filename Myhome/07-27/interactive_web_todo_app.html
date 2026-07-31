@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파이썬 To-Do 리스트 웹 애플리케이션</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar for Terminal */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1e2e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #45475a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #585b70;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-full flex flex-col antialiased">
+
+    <!-- Top Header & Navigation -->
+    <header class="bg-slate-800/80 backdrop-blur border-b border-slate-700/60 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- App Title -->
+                <div class="flex items-center gap-3">
+                    <div class="bg-emerald-500/20 text-emerald-400 p-2.5 rounded-xl border border-emerald-500/30">
+                        <i class="fa-solid fa-list-check text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg text-white leading-tight">Python To-Do Web Studio</h1>
+                        <p class="text-xs text-slate-400">파이썬 로직의 웹 브라우저 변환 프로젝트</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex gap-1 p-1 bg-slate-950/60 rounded-xl border border-slate-800">
+                    <button id="tab-web-btn" onclick="switchTab('web')" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all text-emerald-400 bg-slate-800 shadow-sm">
+                        <i class="fa-solid fa-desktop"></i>
+                        <span>모던 웹 GUI</span>
+                    </button>
+                    <button id="tab-terminal-btn" onclick="switchTab('terminal')" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-slate-200 transition-all">
+                        <i class="fa-solid fa-terminal"></i>
+                        <span>CLI 터미널 실행기</span>
+                    </button>
+                    <button id="tab-code-btn" onclick="switchTab('code')" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-slate-200 transition-all">
+                        <i class="fa-solid fa-code"></i>
+                        <span>파이썬 원본 코드</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- TAB 1: Modern Web GUI -->
+        <section id="view-web" class="space-y-6">
+            <!-- App Banner/Status -->
+            <div class="bg-gradient-to-r from-emerald-900/40 via-teal-900/30 to-slate-800/50 border border-emerald-500/20 rounded-2xl p-5 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-semibold text-emerald-300">웹 인터랙티브 To-Do 리스트</h2>
+                    <p class="text-sm text-slate-300 mt-1">제시해주신 파이썬의 <code class="bg-slate-950/60 px-1.5 py-0.5 rounded text-emerald-400 font-mono text-xs">add_todo</code>, <code class="bg-slate-950/60 px-1.5 py-0.5 rounded text-emerald-400 font-mono text-xs">mark_completed</code>, <code class="bg-slate-950/60 px-1.5 py-0.5 rounded text-emerald-400 font-mono text-xs">delete_completed</code> 함수를 시각적 웹 UI로 구현했습니다.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span id="stats-badge" class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full text-xs font-medium">
+                        0개 항목 남음
+                    </span>
+                </div>
+            </div>
+
+            <!-- Input Form Card -->
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 shadow-md">
+                <form id="todo-form" onsubmit="handleWebAddTodo(event)" class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-grow">
+                        <i class="fa-solid fa-plus absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="todo-input" placeholder="새로운 할 일을 입력하세요... (예: 파이썬 공부하기)" 
+                            class="w-full bg-slate-900/90 border border-slate-700 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-slate-100 placeholder-slate-500 rounded-xl pl-11 pr-4 py-3 text-sm outline-none transition-all">
+                    </div>
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 text-sm shrink-0">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>할 일 추가</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Control Bar & List -->
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 shadow-md space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/60 pb-4">
+                    <!-- Filters -->
+                    <div class="flex items-center bg-slate-900/80 p-1 rounded-xl border border-slate-700/60 text-xs">
+                        <button onclick="setFilter('all')" id="filter-all" class="px-3 py-1.5 rounded-lg transition-all font-medium bg-emerald-500/20 text-emerald-400">전체</button>
+                        <button onclick="setFilter('active')" id="filter-active" class="px-3 py-1.5 rounded-lg transition-all font-medium text-slate-400 hover:text-slate-200">진행 중</button>
+                        <button onclick="setFilter('completed')" id="filter-completed" class="px-3 py-1.5 rounded-lg transition-all font-medium text-slate-400 hover:text-slate-200">완료됨</button>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex items-center gap-2">
+                        <button onclick="handleDeleteCompleted()" class="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 hover:text-rose-300 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-trash-can"></i>
+                            <span>완료된 항목 삭제 (`delete_completed`)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Todo List Items -->
+                <ul id="todo-list" class="space-y-2.5">
+                    <!-- Dynamic rendering -->
+                </ul>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="hidden py-12 text-center text-slate-500 space-y-3">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-slate-900/80 flex items-center justify-center text-slate-600 text-2xl border border-slate-800">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                    </div>
+                    <p class="text-sm font-medium">등록된 할 일이 없습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: Python CLI Simulator -->
+        <section id="view-terminal" class="hidden space-y-6">
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-semibold text-sky-300">파이썬 콘솔 CLI 대화형 실행기</h2>
+                    <p class="text-sm text-slate-300 mt-1">박은지 님과 유창훈 님의 콘솔 기반 파이썬 명령 줄 인터페이스 로직을 터미널 환경으로 재현했습니다.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="selectCliMode('yuchanghoon')" id="cli-mode-yc" class="px-3 py-1.5 bg-sky-500/20 border border-sky-500/40 text-sky-300 rounded-xl text-xs font-medium">
+                        유창훈 님 코드 (메뉴선택 방식)
+                    </button>
+                    <button onclick="selectCliMode('parkeunji')" id="cli-mode-pe" class="px-3 py-1.5 bg-slate-700 border border-slate-600 text-slate-400 rounded-xl text-xs font-medium">
+                        박은지 님 코드 (q종료 방식)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Terminal Window -->
+            <div class="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl font-mono text-sm">
+                <!-- Terminal Titlebar -->
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                        <span class="ml-2 text-xs text-slate-400 font-sans font-medium" id="terminal-title">python todo_cli.py</span>
+                    </div>
+                    <button onclick="resetTerminal()" class="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1 font-sans">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>재시작</span>
+                    </button>
+                </div>
+
+                <!-- Terminal Output Display Area -->
+                <div id="terminal-output" class="p-4 sm:p-6 h-96 overflow-y-auto space-y-2 text-slate-300 leading-relaxed">
+                    <!-- CLI Logs generated here -->
+                </div>
+
+                <!-- Terminal Input Form -->
+                <form id="terminal-form" onsubmit="handleTerminalSubmit(event)" class="border-t border-slate-800 bg-slate-900/50 p-3 flex items-center gap-3">
+                    <span class="text-emerald-400 font-bold pl-2">&gt;</span>
+                    <input type="text" id="terminal-input" autocomplete="off" placeholder="입력 후 Enter 키를 누르세요..."
+                        class="flex-grow bg-transparent text-emerald-300 placeholder-slate-600 font-mono text-sm outline-none">
+                    <button type="submit" class="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white text-xs font-sans rounded-lg transition-all shrink-0">
+                        전송
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- TAB 3: Code Source Viewer -->
+        <section id="view-code" class="hidden space-y-6">
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 shadow-md">
+                <h2 class="text-lg font-semibold text-purple-300">원본 파이썬 코드 및 웹 이식 구조</h2>
+                <p class="text-sm text-slate-300 mt-1">입력하신 파이썬 데이터 구조가 웹 자바스크립트로 어떻게 대응되는지 비교할 수 있습니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Python Source Box -->
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+                        <div class="flex items-center gap-2 text-amber-400 font-sans font-medium">
+                            <i class="fa-brands fa-python text-base"></i>
+                            <span>원본 Python 코드</span>
+                        </div>
+                        <span>todo.py</span>
+                    </div>
+                    <pre class="p-4 text-xs font-mono text-slate-300 overflow-x-auto leading-relaxed"><code># 파이썬 Todo 데이터 구조
+todos = []
+
+def add_todo(task):
+    todos.append({'task': task, 'completed': False})
+
+def view_todos():
+    for i, item in enumerate(todos, 1):
+        status = "[X]" if item['completed'] else "[ ]"
+        print(f"{i}. {status} {item['task']}")
+
+def mark_completed(task_index):
+    if 1 &lt;= task_index &lt;= len(todos):
+        todos[task_index - 1]['completed'] = True
+
+def delete_completed_tasks():
+    global todos
+    todos = [task for task in todos if not task['completed']]</code></pre>
+                </div>
+
+                <!-- JavaScript/Web Equivalent Box -->
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+                        <div class="flex items-center gap-2 text-yellow-400 font-sans font-medium">
+                            <i class="fa-brands fa-js text-base"></i>
+                            <span>웹 브라우저 JavaScript 대응 코드</span>
+                        </div>
+                        <span>app.js</span>
+                    </div>
+                    <pre class="p-4 text-xs font-mono text-slate-300 overflow-x-auto leading-relaxed"><code>// 자바스크립트 Todo 데이터 구조 (브라우저 연동)
+let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+function addTodo(task) {
+    todos.push({ task: task, completed: false });
+    saveAndRender();
+}
+
+function toggleCompleted(index) {
+    todos[index].completed = !todos[index].completed;
+    saveAndRender();
+}
+
+function deleteCompletedTasks() {
+    todos = todos.filter(item =&gt; !item.completed);
+    saveAndRender();
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-800 border border-emerald-500/40 text-emerald-300 px-4 py-3 rounded-xl shadow-2xl transition-all transform translate-y-20 opacity-0 flex items-center gap-3 z-50 text-sm">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-msg">알림 메시지</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // State variables for Web GUI
+        let todos = JSON.parse(localStorage.getItem('python_web_todos')) || [
+            { task: '파이썬 기초 문법 익히기', completed: true },
+            { task: '웹 브라우저에서 실행 가능한 UI 제작하기', completed: false },
+            { task: 'To-Do 애플리케이션 테스트해보기', completed: false }
+        ];
+        let currentFilter = 'all';
+
+        // State variables for CLI Terminal Simulator
+        let cliMode = 'yuchanghoon'; // 'yuchanghoon' or 'parkeunji'
+        let cliTodos = [];
+        let cliState = 'MENU'; // For yuchanghoon: MENU, ADD, DELETE
+
+        // Tab Switching Logic
+        function switchTab(tab) {
+            document.getElementById('view-web').classList.add('hidden');
+            document.getElementById('view-terminal').classList.add('hidden');
+            document.getElementById('view-code').classList.add('hidden');
+
+            document.getElementById('tab-web-btn').className = 'flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-slate-200 transition-all';
+            document.getElementById('tab-terminal-btn').className = 'flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-slate-200 transition-all';
+            document.getElementById('tab-code-btn').className = 'flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-slate-200 transition-all';
+
+            if (tab === 'web') {
+                document.getElementById('view-web').classList.remove('hidden');
+                document.getElementById('tab-web-btn').className = 'flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-emerald-400 bg-slate-800 shadow-sm';
+            } else if (tab === 'terminal') {
+                document.getElementById('view-terminal').classList.remove('hidden');
+                document.getElementById('tab-terminal-btn').className = 'flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-sky-400 bg-slate-800 shadow-sm';
+            } else if (tab === 'code') {
+                document.getElementById('view-code').classList.remove('hidden');
+                document.getElementById('tab-code-btn').className = 'flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium text-purple-400 bg-slate-800 shadow-sm';
+            }
+        }
+
+        // Save and Render Web Todos
+        function saveAndRender() {
+            localStorage.setItem('python_web_todos', JSON.stringify(todos));
+            renderWebTodos();
+        }
+
+        function handleWebAddTodo(event) {
+            event.preventDefault();
+            const input = document.getElementById('todo-input');
+            const taskText = input.value.trim();
+
+            if (!taskText) {
+                showToast('할 일 내용을 입력해주세요.', 'warning');
+                return;
+            }
+
+            todos.push({ task: taskText, completed: false });
+            input.value = '';
+            saveAndRender();
+            showToast(`Task '${taskText}' added.`);
+        }
+
+        function toggleTaskStatus(index) {
+            todos[index].completed = !todos[index].completed;
+            saveAndRender();
+            const statusMsg = todos[index].completed ? '완료 처리되었습니다.' : '진행 중으로 변경되었습니다.';
+            showToast(statusMsg);
+        }
+
+        function deleteTask(index) {
+            const taskName = todos[index].task;
+            todos.splice(index, 1);
+            saveAndRender();
+            showToast(`'${taskName}' 항목이 삭제되었습니다.`);
+        }
+
+        function handleDeleteCompleted() {
+            const initialLen = todos.length;
+            todos = todos.filter(item => !item.completed);
+            
+            if (todos.length < initialLen) {
+                saveAndRender();
+                showToast("Completed tasks deleted.");
+            } else {
+                showToast("No completed tasks to delete.", 'warning');
+            }
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('[id^="filter-"]').forEach(btn => {
+                btn.className = 'px-3 py-1.5 rounded-lg transition-all font-medium text-slate-400 hover:text-slate-200';
+            });
+            document.getElementById(`filter-${filter}`).className = 'px-3 py-1.5 rounded-lg transition-all font-medium bg-emerald-500/20 text-emerald-400';
+            renderWebTodos();
+        }
+
+        function renderWebTodos() {
+            const listEl = document.getElementById('todo-list');
+            const emptyEl = document.getElementById('empty-state');
+            const badgeEl = document.getElementById('stats-badge');
+
+            listEl.innerHTML = '';
+
+            const filteredTodos = todos.filter(item => {
+                if (currentFilter === 'active') return !item.completed;
+                if (currentFilter === 'completed') return item.completed;
+                return true;
+            });
+
+            const activeCount = todos.filter(t => !t.completed).length;
+            badgeEl.textContent = `${activeCount}개 항목 남음`;
+
+            if (filteredTodos.length === 0) {
+                emptyEl.classList.remove('hidden');
+            } else {
+                emptyEl.classList.add('hidden');
+
+                filteredTodos.forEach((item, filteredIdx) => {
+                    // Find actual original index in todos array
+                    const originalIndex = todos.indexOf(item);
+
+                    const li = document.createElement('li');
+                    li.className = 'group flex items-center justify-between p-3.5 bg-slate-900/60 hover:bg-slate-900 border border-slate-700/50 hover:border-slate-600 rounded-xl transition-all duration-200';
+
+                    li.innerHTML = `
+                        <div class="flex items-center gap-3.5 flex-grow min-w-0 pr-3">
+                            <span class="text-xs font-mono text-slate-500 w-5 text-right shrink-0">${originalIndex + 1}.</span>
+                            <button onclick="toggleTaskStatus(${originalIndex})" class="w-5 h-5 rounded-md border ${item.completed ? 'bg-emerald-500 border-emerald-500 text-slate-950' : 'border-slate-600 hover:border-emerald-400'} flex items-center justify-center transition-all shrink-0">
+                                ${item.completed ? '<i class="fa-solid fa-check text-xs font-bold"></i>' : ''}
+                            </button>
+                            <span class="text-sm text-slate-200 truncate ${item.completed ? 'line-through text-slate-500' : ''}">${escapeHtml(item.task)}</span>
+                        </div>
+                        <div class="flex items-center gap-2 opacity-80 sm:opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="deleteTask(${originalIndex})" class="p-1.5 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-rose-500/10 transition-colors" title="삭제">
+                                <i class="fa-solid fa-trash text-xs"></i>
+                            </button>
+                        </div>
+                    `;
+                    listEl.appendChild(li);
+                });
+            }
+        }
+
+        // Terminal CLI Simulation Logic
+        function printTerminal(text, type = 'normal') {
+            const output = document.getElementById('terminal-output');
+            const line = document.createElement('div');
+            
+            if (type === 'input') {
+                line.className = 'text-sky-400 font-semibold';
+                line.textContent = `> ${text}`;
+            } else if (type === 'system') {
+                line.className = 'text-amber-300 font-medium';
+                line.textContent = text;
+            } else if (type === 'error') {
+                line.className = 'text-rose-400';
+                line.textContent = text;
+            } else {
+                line.className = 'text-slate-300';
+                line.textContent = text;
+            }
+
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function resetTerminal() {
+            document.getElementById('terminal-output').innerHTML = '';
+            cliTodos = [];
+            cliState = 'MENU';
+
+            if (cliMode === 'yuchanghoon') {
+                document.getElementById('terminal-title').textContent = 'python yuchanghoon_todo.py';
+                printTerminal("뭘 할래\n1: 할 일 등록\n2: 할 일 목록 보기\n3: 할 일 삭제하기", 'system');
+            } else {
+                document.getElementById('terminal-title').textContent = 'python parkeunji_todo.py';
+                printTerminal("할 일 목록 입력을 시작합니다. 'q' 또는 'quit'를 입력하면 종료됩니다.", 'system');
+                printTerminal("새로운 할 일을 입력하세요: ", 'system');
+            }
+        }
+
+        function selectCliMode(mode) {
+            cliMode = mode;
+            if (mode === 'yuchanghoon') {
+                document.getElementById('cli-mode-yc').className = 'px-3 py-1.5 bg-sky-500/20 border border-sky-500/40 text-sky-300 rounded-xl text-xs font-medium';
+                document.getElementById('cli-mode-pe').className = 'px-3 py-1.5 bg-slate-700 border border-slate-600 text-slate-400 rounded-xl text-xs font-medium';
+            } else {
+                document.getElementById('cli-mode-yc').className = 'px-3 py-1.5 bg-slate-700 border border-slate-600 text-slate-400 rounded-xl text-xs font-medium';
+                document.getElementById('cli-mode-pe').className = 'px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 rounded-xl text-xs font-medium';
+            }
+            resetTerminal();
+        }
+
+        function handleTerminalSubmit(event) {
+            event.preventDefault();
+            const inputEl = document.getElementById('terminal-input');
+            const val = inputEl.value.trim();
+            inputEl.value = '';
+
+            printTerminal(val, 'input');
+
+            if (cliMode === 'yuchanghoon') {
+                processYuchanghoonCli(val);
+            } else {
+                processParkeunjiCli(val);
+            }
+        }
+
+        // Processing Yuchanghoon's Logic
+        function processYuchanghoonCli(val) {
+            if (cliState === 'MENU') {
+                if (val === '1') {
+                    printTerminal("할 일을 등록해주세요");
+                    cliState = 'ADD';
+                } else if (val === '2') {
+                    printTerminal("할 일 목록입니다");
+                    printTerminal(JSON.stringify(cliTodos));
+                    printTerminal("\n뭘 할래\n1: 할 일 등록\n2: 할 일 목록 보기\n3: 할 일 삭제하기", 'system');
+                } else if (val === '3') {
+                    printTerminal(JSON.stringify(cliTodos));
+                    printTerminal("삭제할 할 일 번호를 입력해주세요");
+                    cliState = 'DELETE';
+                } else {
+                    printTerminal("잘못된 입력입니다", 'error');
+                    printTerminal("\n뭘 할래\n1: 할 일 등록\n2: 할 일 목록 보기\n3: 할 일 삭제하기", 'system');
+                }
+            } else if (cliState === 'ADD') {
+                cliTodos.push(val);
+                printTerminal("등록되었을겁니다");
+                cliState = 'MENU';
+                printTerminal("\n뭘 할래\n1: 할 일 등록\n2: 할 일 목록 보기\n3: 할 일 삭제하기", 'system');
+            } else if (cliState === 'DELETE') {
+                const idx = parseInt(val, 10);
+                if (!isNaN(idx) && idx >= 1 && idx <= cliTodos.length) {
+                    cliTodos.splice(idx - 1, 1);
+                    printTerminal(`${idx}번 항목이 삭제되었습니다.`);
+                } else {
+                    printTerminal("잘못된 번호입니다.", 'error');
+                }
+                cliState = 'MENU';
+                printTerminal("\n뭘 할래\n1: 할 일 등록\n2: 할 일 목록 보기\n3: 할 일 삭제하기", 'system');
+            }
+        }
+
+        // Processing ParkEunji's Logic
+        function processParkeunjiCli(val) {
+            const lower = val.toLowerCase();
+            if (lower === 'q' || lower === 'quit') {
+                printTerminal("\n--- 오늘의 to-do 리스트 ---", 'system');
+                printTerminal("==========", 'system');
+                if (cliTodos.length > 0) {
+                    cliTodos.forEach((item, index) => {
+                        printTerminal(`${index + 1}. ${item}`);
+                    });
+                } else {
+                    printTerminal("아직 할 일이 없습니다.");
+                }
+                printTerminal("\n프로그램이 종료되었습니다. 다시 시작하려면 '재시작'을 누르세요.");
+            } else if (val === '') {
+                printTerminal("할 일을 입력해주세요.", 'error');
+                printTerminal("새로운 할 일을 입력하세요: ", 'system');
+            } else {
+                cliTodos.push(val);
+                printTerminal(`'${val}'가 목록에 추가되었습니다.`);
+                printTerminal("새로운 할 일을 입력하세요: ", 'system');
+            }
+        }
+
+        // Utility Functions
+        function showToast(msg, mode = 'info') {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.textContent = msg;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, function(m) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[m];
+            });
+        }
+
+        // Initial Load Event
+        window.onload = function() {
+            renderWebTodos();
+            resetTerminal();
+        };
+    </script>
+</body>
+</html>
